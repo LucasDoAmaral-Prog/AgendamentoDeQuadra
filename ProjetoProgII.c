@@ -22,20 +22,31 @@ int alugarQuadra() {
     int *register_Agenda = malloc(sizeof(int));     // Alocação dinâmica para o RA
     char register_Data[6], register_Hora[12];
     
-// Dados de entrada do usuário
+    // Dados de entrada do usuário
     printf("Digite seu Registro Academico (RA): ");
     scanf("%d", register_Agenda);
     printf("Digite a Data (DD/MM): ");
     scanf("%s", register_Data);
-    printf("Digite a Hora (HH:MM): ");
-    scanf("%s", register_Hora);
 
-       // Variáveis para armazenar cada linha do arquivo
+    // Verifica o horário
+    int horario_valido = 0;
+    while (!horario_valido) {
+        printf("Digite a Hora (HH:MM): ");
+        scanf("%s", register_Hora);
+
+        // Verifica se o é "redondo"
+        if (strlen(register_Hora) >= 5 && register_Hora[3] == '0' && register_Hora[4] == '0') {
+            horario_valido = 1;
+        } else {
+            printf("Horário inválido. Por favor, insira um horário redondo (ex: 14:00).\n");
+        }
+    }
+              // Variáveis para armazenar cada linha do arquivo
     int raFile;
     char dataFile[6], horaFile[12];
     int reserva_existente = 0;
 
-     // Percorre o arquivo e verifica se a reserva já existe
+    // Percorre o arquivo e verifica se a reserva já existe
     while (fscanf(arq_Agenda, "%d %s %s", &raFile, dataFile, horaFile) != EOF) {
         if (strcmp(dataFile, register_Data) == 0 && strcmp(horaFile, register_Hora) == 0) {
             printf("Reserva já está ocupada para esta data e horário.\n");
@@ -49,7 +60,7 @@ int alugarQuadra() {
         printf("Reserva concluída com sucesso.\n");
     }
 
-    free(register_Agenda); // Libera a memória alocada
+    free(register_Agenda); 
     fclose(arq_Agenda);
     pausar();
     return 0;
