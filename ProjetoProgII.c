@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
+#include "sporthub.h"
 
    // Função para pausar antes de voltar ao menu
 void pausar() {
