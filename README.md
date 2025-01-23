@@ -43,13 +43,13 @@ Planejamos migrar este sistema para uma **aplicação web ou mobile**, expandind
 ## 🚴 Como Usar  
 1. Clone este repositório:  
    ```bash
-   git clone https://github.com/seu-usuario/agendamento-quadras```
+   git clone https://github.com/seu-usuario/agendamento-quadras
 
 2. Compile o código:
    ```bash
-   gcc agendamento_quadras.c -o agendamento```
+   gcc agendamento_quadras.c -o agendamento
 
 3.Execute o programa:
 ```bash
-./agendamento```
+./agendamento
 
